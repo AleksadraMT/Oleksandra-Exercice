@@ -2,19 +2,20 @@
   <v-app>
     <v-content>
       <Treeview />
-      <!-- <Range /> -->
+      <Range />
     </v-content>
   </v-app>
 </template>
 
 <script>
 import Treeview from './components/Treeview';
-// import Range from './components/Range';
+import Range from './components/Range';
 
 export default {
   name: 'App',
   components: {
     Treeview,
+    Range,
   },
   data () {
     return {

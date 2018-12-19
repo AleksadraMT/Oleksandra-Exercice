@@ -322,8 +322,6 @@ Vue.use(Vuebar);
   }
 
   &-selected-close {
-    // background-color: #e9ebeb;
-
     .v-icon {
       margin-left: 4px;
       margin-right: -18px;
@@ -371,18 +369,4 @@ Vue.use(Vuebar);
     height: calc(100% - 8px);
     display: block;
 }
-
-.vb.vb-scrolling-phantom > .vb-dragger > .vb-dragger-styler {
-    // background-color: rgba(48, 121, 244,.3);
-}
-
-// .vb.vb-dragging > .vb-dragger > .vb-dragger-styler {
-//     background-color: rgba(48, 121, 244,.5);
-//     margin: 0px;
-//     height: 100%;
-// }
-
-// .vb.vb-dragging-phantom > .vb-dragger > .vb-dragger-styler {
-//     background-color: rgba(48, 121, 244,.5);
-// }
 </style>
