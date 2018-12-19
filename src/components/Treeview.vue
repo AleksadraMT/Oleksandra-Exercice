@@ -6,50 +6,55 @@
         <div class="tree-title">
           Choose interests
         </div>
-        <v-card-text class="tree-container">
-          <v-treeview 
-            v-model="tree"
-            :items="items"
-            open-on-click
-            selectable
-            activatable
-            selected-color="#0d6380"
-            expand-icon="keyboard_arrow_down"
-            on-icon="$vuetify.icons.checkboxOn"
-            off-icon="$vuetify.icons.checkboxOff"
-            indeterminate-icon="$vuetify.icons.checkboxIndeterminate"
-            >
-          </v-treeview>
-          <div class="tree-border"></div>
-        </v-card-text>
+        <div v-bar>
+          <v-card-text class="tree-container">
+            <v-treeview 
+              v-model="tree"
+              :items="items"
+              open-on-click
+              selectable
+              activatable
+              selected-color="#0d6380"
+              expand-icon="keyboard_arrow_down"
+              on-icon="$vuetify.icons.checkboxOn"
+              off-icon="$vuetify.icons.checkboxOff"
+              indeterminate-icon="$vuetify.icons.checkboxIndeterminate"
+              >
+            </v-treeview>         
+          </v-card-text>
+          <div class="tree-scroll-divider"></div>
+        </div>
       </v-flex>
     </v-layout>
   </div>
 
+  <div class="tree-selected">
     <v-scroll-x-transition
-    group
-    hide-on-leave
-  >
-    <v-chip
-      v-for="(selection, id) in selections"
-      :key="id"
-      :id="selection.id"
-      color="grey"
-      dark
-      small
+      group
+      hide-on-leave
     >
-      {{ selection.name }}
-    <v-icon
-      right 
-      small
-      @click="removeItem(selection.id)"
-      >close</v-icon>
-    </v-chip>
-  </v-scroll-x-transition>
+      <v-chip
+        v-for="(selection, id) in selections"
+        :key="id"
+        :id="selection.id"
+        color="grey"
+        class="tree-selected-item"
+        dark
+        small
+      >{{selection.name}}<!--
+      --><span class="tree-selected-close"><v-icon @click="removeItem(selection.id)">cancel</v-icon></span>
+      </v-chip>
+    </v-scroll-x-transition>
+  </div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import Vuebar from 'vuebar'; 
+
+Vue.use(Vuebar);
+
   export default {
     name: 'treeview',
     data: () => ({
@@ -269,8 +274,8 @@
 
   &-container {
     padding: 20px 0 20px 21px;
-    max-height: 280px;
-    overflow-y: auto;
+    max-height: 240px;
+    // overflow-y: auto;
     position: relative;
 
     &.v-treeview-node__label {
@@ -293,5 +298,91 @@
       margin-left: 7px;
     }
   }
+
+  &-scroll-divider {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: $greyColor;
+    right: 18px;
+    top: 0;
+    bottom: 0;
+  }
+
+  &-selected-item {
+    height: 30px;
+    margin: 10px 10px 0 0;
+    background-color: $greyColor !important;
+    border-color: $greyColor !important;
+    font-size: 14px;
+
+    .v-chip__content {
+      padding: 0 19px;
+    }
+  }
+
+  &-selected-close {
+    // background-color: #e9ebeb;
+
+    .v-icon {
+      margin-left: 4px;
+      margin-right: -18px;
+      color: #e9ebeb;
+      position: relative;
+      font-size: 25px;
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        background-color: #1d1e1e;
+        right: calc(50% - 8px);
+        top: calc(50% - 7px);
+        z-index: -1;
+        border-radius: 100%;
+      }
+
+      &:hover {
+        color: lighten($greyColor, 50%);
+      }
+    }
+  }
 }
+
+// Custom Scroll Style
+
+.vb {
+  .vb-dragger {
+    z-index: 5;
+    width: 19px;
+    right: 0;
+  }
+}
+
+.vb > .vb-dragger > .vb-dragger-styler {
+    backface-visibility: hidden;
+    transform: rotate3d(0, 0, 0, 0);
+    transition: background-color 100ms ease-out, margin 100ms ease-out, height 100ms ease-out;
+    background-color: #868a8a;
+    margin: 4px 3px 0px 5px;
+    border-radius: 3px;
+    height: calc(100% - 8px);
+    display: block;
+}
+
+.vb.vb-scrolling-phantom > .vb-dragger > .vb-dragger-styler {
+    // background-color: rgba(48, 121, 244,.3);
+}
+
+// .vb.vb-dragging > .vb-dragger > .vb-dragger-styler {
+//     background-color: rgba(48, 121, 244,.5);
+//     margin: 0px;
+//     height: 100%;
+// }
+
+// .vb.vb-dragging-phantom > .vb-dragger > .vb-dragger-styler {
+//     background-color: rgba(48, 121, 244,.5);
+// }
 </style>
