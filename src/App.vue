@@ -75,6 +75,7 @@ body, html {
   color: #1d1e1e;
   background-color: $whiteColor;
   box-sizing: border-box;
+  min-width: 900px;
 }
 
 .content-width {
