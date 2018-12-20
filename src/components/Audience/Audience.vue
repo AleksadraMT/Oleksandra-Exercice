@@ -89,7 +89,7 @@ export default {
 
 <style lang="scss">
 .audience {
-  padding: 37px 30px 2px;
+  padding: 37px 30px 21px;
   &-right {
     width: 100%;
   }
