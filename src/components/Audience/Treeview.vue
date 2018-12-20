@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 <template>
 <div>
   <div class="tree">
@@ -52,7 +53,7 @@
       </v-chip>
     </v-scroll-x-transition>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -245,18 +246,17 @@ export default {
             }
           } else {
             if (element.children) {
+              parentsArr.push(element.id)
 
-              parentsArr.push(element.id);
-
-              checkChildren(element.children);
+              checkChildren(element.children)
             }
           }
-        });
+        })
       }
-      checkChildren(this.items);
+      checkChildren(this.items)
 
-      this.tree = newTree(parentsArr);
-    },
+      this.tree = newTree(parentsArr)
+    }
   }
 }
 </script>
