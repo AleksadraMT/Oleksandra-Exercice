@@ -26,7 +26,7 @@
     </div>
     <v-divider class="range-divider"></v-divider>
     <div class="range-about">
-      Hints and help text goes there. For example, we can tell here the 
+      Hints and help text goes here. For example, we can tell here the 
       problem with too big or too specific audience size.
     </div>
   </div>
@@ -85,23 +85,24 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './../assets/scss/variables.scss';
+  @import './../../assets/scss/variables.scss';
 
   .range {
     width: 365px;
     min-height: 295px;
-    padding: 18px 40px;
+    padding: 20px 40px;
     color: $fontColor;
     background-color: #fff;
     box-shadow: 0 0 7px 1px rgba(0, 0, 0, .1);
     border-radius: 5px;
+    position: relative;
 
     &-title {
       text-align: center;
       line-height: 1;
       font: {
         weight: 700;
-        size: 21px;
+        size: 19px;
       }
     }
 
@@ -116,8 +117,9 @@ export default {
       text-align: center;
       font-weight: 700;
       color: $blueColor;
-      font-size: 25px;
-      line-height: 1.4em;
+      font-size: 23px;
+      line-height: 1;
+      padding: 5px 0 6px;
     }
 
     &-slider {
@@ -164,15 +166,15 @@ export default {
       justify-content: space-between;
       padding: 7px 0 0 2px;
       font-size: 15px;
-      margin: 0 2px;
       color: #676a6a;
     }
 
     &-about {
       color: #252626;
       text-align: center;
-      line-height: 18px;
-      font-size: 15px;
+      line-height: 17px;
+      font-size: 14px;
+      padding-top: 2px;
     }
   }
 </style>
