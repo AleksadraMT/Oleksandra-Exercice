@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="range-description">
-          <span>Low</span><span>High</span>
-        </div>
+        <span>Low</span><span>High</span>
+      </div>
     </div>
     <v-divider class="range-divider"></v-divider>
     <div class="range-about">
@@ -45,7 +45,6 @@ export default {
     current: 0,
     calibration: 10,
   }),
-
   computed: {
     currentNumber: function() {
       return this.current.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
@@ -76,7 +75,7 @@ export default {
         case (this.current > this.max && this.current < this.general):
           return 100 + (this.right / this.min * (this.current - this.max)) + '%';
 
-          case (this.current > this.general):
+        case (this.current > this.general):
           return 100 + this.right + '%';
       }
     }
